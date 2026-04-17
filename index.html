@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Time Calculator</title>
 
 <style>
@@ -36,7 +37,7 @@ h1 {
   margin: 0;
 }
 
-/* Reset button top */
+/* Reset */
 .reset {
   background: #ef4444;
   color: white;
@@ -46,12 +47,6 @@ h1 {
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.reset:hover {
-  background: #dc2626;
-  transform: scale(1.05);
 }
 
 /* Inputs */
@@ -68,18 +63,11 @@ input {
   border: 2px solid #e2e8f0;
   text-align: center;
   outline: none;
-  transition: 0.2s;
-}
-
-input:focus {
-  border-color: #60a5fa;
-  box-shadow: 0 0 10px rgba(96,165,250,0.3);
 }
 
 /* Buttons */
 .buttons {
   display: flex;
-  gap: 20px;
   margin-top: 25px;
 }
 
@@ -91,14 +79,8 @@ button.add {
   border: none;
   cursor: pointer;
   font-weight: bold;
-  transition: 0.3s;
   background: #22c55e;
   color: white;
-}
-
-button.add:hover {
-  background: #16a34a;
-  transform: scale(1.03);
 }
 
 /* List */
@@ -115,7 +97,6 @@ button.add:hover {
   margin-bottom: 10px;
   border-radius: 15px;
   background: #f1f5f9;
-  font-size: 18px;
 }
 
 .delete {
@@ -135,14 +116,58 @@ button.add:hover {
   color: #0ea5e9;
 }
 
-/* Scroll */
-.list::-webkit-scrollbar {
-  width: 6px;
-}
+/* ========================= */
+/* 📱 MOBILE RESPONSIVE */
+/* ========================= */
 
-.list::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 10px;
+@media (max-width: 768px) {
+
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .reset {
+    width: 100%;
+  }
+
+  .inputs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  button.add {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .item {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .total {
+    font-size: 24px;
+  }
 }
 </style>
 
@@ -152,28 +177,23 @@ button.add:hover {
 
 <div class="container">
 
-  <!-- HEADER -->
   <div class="header">
     <h1>⏱️ Time Calculator</h1>
     <button class="reset" onclick="resetAll()">♻️ Reset</button>
   </div>
 
-  <!-- INPUTS -->
   <div class="inputs">
     <input type="number" id="hours" placeholder="Heures">
     <input type="number" id="minutes" placeholder="Minutes">
     <input type="number" id="count" placeholder="Nombre">
   </div>
 
-  <!-- ADD BUTTON -->
   <div class="buttons">
     <button class="add" onclick="addTime()">➕ Ajouter</button>
   </div>
 
-  <!-- LIST -->
   <div class="list" id="list"></div>
 
-  <!-- TOTAL -->
   <div class="total" id="total">0h 0min</div>
 
 </div>
