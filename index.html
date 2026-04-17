@@ -35,9 +35,10 @@ h1 {
   font-size: 36px;
   color: #2563eb;
   margin: 0;
+  transition: 0.3s;
 }
 
-/* Reset */
+/* Reset button */
 .reset {
   background: #ef4444;
   color: white;
@@ -69,6 +70,7 @@ input {
   border: 2px solid #e2e8f0;
   text-align: center;
   outline: none;
+  transition: 0.3s;
 }
 
 input:focus {
@@ -143,12 +145,12 @@ button.add:hover {
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 22px; /* صغير شوية */
   }
 
   .header {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .inputs {
@@ -218,16 +220,16 @@ function addTime() {
   display();
 }
 
-function deleteItem(i) {
-  entries.splice(i, 1);
-  save();
-  display();
-}
-
+/* RESET FIXED ✔️ */
 function resetAll() {
   entries = [];
   save();
   display();
+
+  // clear inputs
+  document.getElementById("hours").value = "";
+  document.getElementById("minutes").value = "";
+  document.getElementById("count").value = "";
 }
 
 function display() {
@@ -251,6 +253,12 @@ function display() {
 
   document.getElementById("list").innerHTML = html;
   document.getElementById("total").innerText = `Total: ${h}h ${m}min`;
+}
+
+function deleteItem(i) {
+  entries.splice(i, 1);
+  save();
+  display();
 }
 
 display();
